@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reasons I Love You ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts background */
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            font-style: italic;
+        }
+
+        .reason-display {
+            background: linear-gradient(135deg, #ffeef8 0%, #fff5f7 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border: 2px solid #ffc0e3;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reason-text {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 25px rgba(245, 87, 108, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .counter {
+            margin-top: 1.5rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .initial-message {
+            font-size: 1.1rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Valentine popup styles */
+        .valentine-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .valentine-popup {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .valentine-popup h2 {
+            color: #f5576c;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .valentine-popup p {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        }
+
+        .valentine-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(245, 87, 108, 0.3);
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.4);
+        }
+
+        .no-btn {
+            background: #e0e0e0;
+            color: #666;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            position: absolute;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Sparkle effect */
+        .sparkle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #f5576c;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkleAnim 1s ease-out forwards;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) translateY(-50px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Valentine Popup -->
+    <div class="valentine-overlay" id="valentineOverlay">
+        <div class="valentine-popup">
+            <h2>💕 Will You Be My Valentine? 💕</h2>
+            <p>I promise to show you all the reasons why you're amazing...</p>
+            <div class="valentine-buttons">
+                <button class="yes-btn" onclick="answerYes()">Yes! 💖</button>
+                <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" onclick="tryClickNo()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>💝 Reasons I Love You 💝</h1>
+        <p class="subtitle">Click the button to discover why you're amazing</p>
+        
+        <div class="reason-display">
+            <p class="reason-text initial-message">Press the button to see a reason...</p>
+        </div>
+        
+        <button class="btn" onclick="showReason()">Show Me Love ❤️</button>
+        
+        <div class="counter">
+            <span id="counter">Reasons shown: 0</span>
+        </div>
+    </div>
+
+    <script>
+        // Valentine popup functions
+        function answerYes() {
+            const overlay = document.getElementById('valentineOverlay');
+            overlay.style.animation = 'fadeOut 0.5s ease-out forwards';
+            
+            // Create heart explosion
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createCelebrationHeart();
+                }, i * 50);
+            }
+            
+            setTimeout(() => {
+                overlay.classList.add('hidden');
+            }, 500);
+        }
+
+        function moveNoButton() {
+            const noBtn = document.getElementById('noBtn');
+            const popup = noBtn.closest('.valentine-popup');
+            const popupRect = popup.getBoundingClientRect();
+            
+            // Random position within the popup
+            const maxX = popupRect.width - noBtn.offsetWidth - 40;
+            const maxY = popupRect.height - noBtn.offsetHeight - 40;
+            
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        function tryClickNo() {
+            moveNoButton();
+        }
+
+        function createCelebrationHeart() {
+            const heart = document.createElement('div');
+            heart.textContent = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '50%';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '9999';
+            heart.style.animation = 'celebrationPop 2s ease-out forwards';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 2000);
+        }
+
+        // Add celebration animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                to {
+                    opacity: 0;
+                }
+            }
+            @keyframes celebrationPop {
+                0% {
+                    transform: translateY(0) scale(0);
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100vh) scale(1);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Add your personalized reasons here!
+        const reasons = [
+            "Your laugh is my favorite sound in the entire world",
+            "You make even the most ordinary days feel special",
+            "The way you care about the little things shows how big your heart is",
+            "You believe in me even when I don't believe in myself",
+            "Your smile lights up every room you walk into",
+            "You make me want to be a better person every single day",
+            "The way you see beauty in everything inspires me",
+            "You're my best friend and my favorite adventure",
+            "Your kindness to others never goes unnoticed",
+            "You make me laugh until my stomach hurts",
+            "The way you understand me without me having to say a word",
+            "You're incredibly smart and I love learning from you",
+            "Your hugs feel like home to me",
+            "You support my dreams like they're your own",
+            "The little notes you leave for me make my whole day",
+            "Your passion for the things you love is contagious",
+            "You make me feel safe and loved exactly as I am",
+            "The way you dance when you think no one is watching",
+            "You have the most beautiful heart I've ever known",
+            "Every moment with you is a moment I'll treasure forever"
+        ];
+
+        let count = 0;
+        let usedReasons = [];
+
+        function showReason() {
+            // Reset if all reasons have been shown
+            if (usedReasons.length === reasons.length) {
+                usedReasons = [];
+            }
+
+            // Get available reasons
+            const availableReasons = reasons.filter((_, index) => !usedReasons.includes(index));
+            
+            // Pick a random reason from available ones
+            const randomIndex = Math.floor(Math.random() * availableReasons.length);
+            const selectedReason = availableReasons[randomIndex];
+            
+            // Mark this reason as used
+            const originalIndex = reasons.indexOf(selectedReason);
+            usedReasons.push(originalIndex);
+
+            // Update display
+            const reasonText = document.querySelector('.reason-text');
+            reasonText.textContent = selectedReason;
+            reasonText.classList.remove('initial-message');
+            
+            // Update counter
+            count++;
+            document.getElementById('counter').textContent = `Reasons shown: ${count}`;
+
+            // Create sparkle effect
+            createSparkles();
+        }
+
+        function createSparkles() {
+            const button = document.querySelector('.btn');
+            const rect = button.getBoundingClientRect();
+            
+            for (let i = 0; i < 8; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = rect.left + rect.width / 2 + 'px';
+                sparkle.style.top = rect.top + rect.height / 2 + 'px';
+                sparkle.style.animationDelay = (i * 0.1) + 's';
+                
+                const angle = (Math.PI * 2 * i) / 8;
+                const distance = 50;
+                sparkle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                sparkle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+                
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 1000);
+            }
+        }
+
+        // Create floating hearts
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            heart.style.fontSize = (Math.random() * 1.5 + 1) + 'rem';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 15000);
+        }
+
+        // Generate hearts periodically
+        setInterval(createFloatingHeart, 2000);
+        
+        // Create initial hearts
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createFloatingHeart, i * 400);
+        }
+    </script>
+</body>
+</html>
