@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reasons I Love You ❤️</title>
+    
+    <title>Reasons I Love You</title>
     <style>
         * {
             margin: 0;
@@ -12,22 +13,26 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Tahoma', 'Verdana', 'Arial', sans-serif;
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: unset;
+            font-smooth: never;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080"><defs><linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:%2358a5f0;stop-opacity:1" /><stop offset="100%" style="stop-color:%2384c5f4;stop-opacity:1" /></linearGradient></defs><rect width="1920" height="1080" fill="url(%23sky)"/><ellipse cx="960" cy="900" rx="800" ry="200" fill="%2393d36e" opacity="0.8"/><ellipse cx="960" cy="920" rx="900" ry="180" fill="%2379c257" opacity="0.7"/></svg>') center/cover;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             position: relative;
+            overflow: hidden;
         }
 
         /* Floating hearts background */
         .heart {
             position: absolute;
             font-size: 2rem;
-            opacity: 0.3;
+            opacity: 0.4;
             animation: float 10s infinite;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         @keyframes float {
@@ -36,10 +41,10 @@
                 opacity: 0;
             }
             10% {
-                opacity: 0.3;
+                opacity: 0.4;
             }
             90% {
-                opacity: 0.3;
+                opacity: 0.4;
             }
             100% {
                 transform: translateY(-100vh) rotate(360deg);
@@ -47,49 +52,138 @@
             }
         }
 
+        /* Windows XP window styling */
         .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 3rem 2.5rem;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            max-width: 500px;
+            background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 100%);
+            border-radius: 8px 8px 0 0;
+            box-shadow: 
+                0 0 0 1px #0831d9,
+                0 0 0 3px #0b77ef,
+                0 8px 25px rgba(0, 0, 0, 0.4);
+            max-width: 550px;
             width: 90%;
             position: relative;
             z-index: 10;
+            overflow: hidden;
+        }
+
+        /* XP Title bar with gradient */
+        .title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, #0997ff 0%, #0053ee 50%, #0050ee 50%, #06f 100%);
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 11px;
+            height: 28px;
+            border-radius: 8px 8px 0 0;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .title-text {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .control-btn {
+            width: 21px;
+            height: 21px;
+            background: linear-gradient(to bottom, #2d92ff 0%, #0b5bd1 100%);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 11px;
+            color: white;
+            font-weight: bold;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+        }
+
+        .control-btn:hover {
+            background: linear-gradient(to bottom, #3da5ff 0%, #1e6fd8 100%);
+        }
+
+        .control-btn:active {
+            background: linear-gradient(to bottom, #0b5bd1 0%, #2d92ff 100%);
+            box-shadow: inset 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .control-btn.minimize::after {
+            content: '_';
+            font-size: 16px;
+            line-height: 0;
+            margin-top: -8px;
+        }
+
+        .control-btn.maximize::after {
+            content: '□';
+            font-size: 13px;
+        }
+
+        .control-btn.close {
+            background: linear-gradient(to bottom, #ff5a5a 0%, #d13b3b 100%);
+        }
+
+        .control-btn.close:hover {
+            background: linear-gradient(to bottom, #ff6b6b 0%, #e04848 100%);
+        }
+
+        .control-btn.close::after {
+            content: '✕';
+            font-size: 11px;
+        }
+
+        /* Window content area */
+        .window-content {
+            padding: 2rem 1.5rem;
+            background: #ece9d8;
         }
 
         h1 {
-            color: #764ba2;
-            font-size: 2.2rem;
+            color: #003399;
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            font-weight: 600;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .subtitle {
-            color: #666;
-            font-size: 1rem;
-            margin-bottom: 2.5rem;
-            font-style: italic;
+            color: #000000;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
+        /* XP style inset panel */
         .reason-display {
-            background: linear-gradient(135deg, #ffeef8 0%, #fff5f7 100%);
-            padding: 2rem;
-            border-radius: 20px;
+            background: #ffffff;
+            padding: 1.5rem;
             min-height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 2rem;
-            border: 2px solid #ffc0e3;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 1px solid #7f9db9;
+            border-radius: 4px;
+            box-shadow: 
+                inset 0 0 0 1px #ffffff,
+                inset 1px 1px 3px rgba(0,0,0,0.1);
         }
 
         .reason-text {
-            font-size: 1.3rem;
-            color: #333;
+            font-size: 1.1rem;
+            color: #000000;
             line-height: 1.6;
             animation: fadeIn 0.8s ease-in;
         }
@@ -97,78 +191,94 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
             }
         }
 
+        /* XP glossy button */
         .btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
+            background: linear-gradient(to bottom, 
+                #fff 0%, 
+                #ecebe5 48%, 
+                #d8d4c8 52%, 
+                #ccc9bb 100%);
+            color: #000000;
+            border: 1px solid #003c74;
+            padding: 6px 24px;
+            font-size: 11px;
+            font-weight: normal;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            box-shadow: 0 10px 25px rgba(245, 87, 108, 0.3);
+            border-radius: 3px;
+            box-shadow: 
+                inset 0 1px 0 rgba(255,255,255,0.7),
+                0 1px 2px rgba(0,0,0,0.2);
+            display: block;
+            margin: 0 auto;
+            min-width: 120px;
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.4);
+            background: linear-gradient(to bottom, 
+                #fff 0%, 
+                #f5f4f0 48%, 
+                #e5e2d8 52%, 
+                #d6d3c8 100%);
+            border-color: #0066cc;
         }
 
         .btn:active {
-            transform: translateY(-1px);
+            background: linear-gradient(to bottom, 
+                #d8d4c8 0%, 
+                #ecebe5 100%);
+            box-shadow: 
+                inset 0 1px 3px rgba(0,0,0,0.2);
+            padding: 7px 23px 5px 25px;
         }
 
         .counter {
             margin-top: 1.5rem;
-            color: #888;
-            font-size: 0.9rem;
+            color: #000000;
+            font-size: 0.85rem;
+            text-align: center;
         }
 
         .initial-message {
-            font-size: 1.1rem;
-            color: #999;
-            font-style: italic;
+            font-size: 1rem;
+            color: #666;
         }
 
-        /* Valentine popup styles */
+        /* Valentine popup - XP dialog box */
         .valentine-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            backdrop-filter: blur(5px);
         }
 
         .valentine-popup {
-            background: white;
-            padding: 3rem 2.5rem;
-            border-radius: 30px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            max-width: 450px;
+            background: linear-gradient(to bottom, #ffffff 0%, #ece9d8 100%);
+            border-radius: 8px 8px 0 0;
+            box-shadow: 
+                0 0 0 1px #0831d9,
+                0 0 0 3px #0b77ef,
+                0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
             width: 90%;
-            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation: popIn 0.3s ease-out;
+            overflow: hidden;
         }
 
         @keyframes popIn {
             0% {
-                transform: scale(0.3);
+                transform: scale(0.8);
                 opacity: 0;
             }
             100% {
@@ -177,17 +287,45 @@
             }
         }
 
+        /* Dialog title bar */
+        .popup-title-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(to bottom, #0997ff 0%, #0053ee 50%, #0050ee 50%, #06f 100%);
+            color: white;
+            padding: 4px 8px;
+            font-weight: bold;
+            font-size: 11px;
+            height: 28px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+        }
+
+        .popup-title-text {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .popup-content {
+            padding: 2rem 1.5rem;
+            background: #ece9d8;
+        }
+
         .valentine-popup h2 {
-            color: #f5576c;
-            font-size: 2.5rem;
+            color: #003399;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
+            font-weight: bold;
+            text-align: center;
         }
 
         .valentine-popup p {
-            color: #666;
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
+            color: #000000;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            text-align: center;
         }
 
         .valentine-buttons {
@@ -198,49 +336,75 @@
         }
 
         .yes-btn {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
+            background: linear-gradient(to bottom, 
+                #fff 0%, 
+                #ecebe5 48%, 
+                #d8d4c8 52%, 
+                #ccc9bb 100%);
+            color: #000000;
+            border: 1px solid #003c74;
+            padding: 6px 24px;
+            font-size: 11px;
+            font-weight: normal;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            box-shadow: 0 10px 25px rgba(245, 87, 108, 0.3);
+            border-radius: 3px;
+            box-shadow: 
+                inset 0 1px 0 rgba(255,255,255,0.7),
+                0 1px 2px rgba(0,0,0,0.2);
+            min-width: 80px;
         }
 
         .yes-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.4);
+            background: linear-gradient(to bottom, 
+                #fff 0%, 
+                #f5f4f0 48%, 
+                #e5e2d8 52%, 
+                #d6d3c8 100%);
+            border-color: #0066cc;
+        }
+
+        .yes-btn:active {
+            background: linear-gradient(to bottom, 
+                #d8d4c8 0%, 
+                #ecebe5 100%);
+            box-shadow: 
+                inset 0 1px 3px rgba(0,0,0,0.2);
+            padding: 7px 23px 5px 25px;
         }
 
         .no-btn {
-            background: #e0e0e0;
-            color: #666;
-            border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            border-radius: 50px;
+            background: linear-gradient(to bottom, 
+                #fff 0%, 
+                #ecebe5 48%, 
+                #d8d4c8 52%, 
+                #ccc9bb 100%);
+            color: #000000;
+            border: 1px solid #003c74;
+            padding: 6px 24px;
+            font-size: 11px;
+            font-weight: normal;
             cursor: pointer;
-            transition: all 0.2s ease;
-            font-weight: 600;
-            position: absolute;
+            border-radius: 3px;
+            box-shadow: 
+                inset 0 1px 0 rgba(255,255,255,0.7),
+                0 1px 2px rgba(0,0,0,0.2);
+            min-width: 80px;
         }
 
         .hidden {
             display: none;
         }
 
-        /* Sparkle effect */
+        /* Sparkle effect - glossy */
         .sparkle {
             position: absolute;
             width: 8px;
             height: 8px;
-            background: #f5576c;
+            background: radial-gradient(circle, #ff1493, #ff69b4);
             border-radius: 50%;
             pointer-events: none;
             animation: sparkleAnim 1s ease-out forwards;
+            box-shadow: 0 0 4px #ff1493;
         }
 
         @keyframes sparkleAnim {
@@ -259,27 +423,47 @@
     <!-- Valentine Popup -->
     <div class="valentine-overlay" id="valentineOverlay">
         <div class="valentine-popup">
-            <h2>💕 Will You Be My Valentine? 💕</h2>
-            <p>I promise to show you all the reasons why you're amazing...</p>
-            <div class="valentine-buttons">
-                <button class="yes-btn" onclick="answerYes()">Yes! 💖</button>
-                <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" onclick="tryClickNo()">No</button>
+            <div class="popup-title-bar">
+                <div class="popup-title-text">💌 Valentine.exe</div>
+                <div class="window-controls">
+                    <div class="control-btn minimize"></div>
+                    <div class="control-btn maximize"></div>
+                    <div class="control-btn close"></div>
+                </div>
+            </div>
+            <div class="popup-content">
+                <h2>Will You Be My Valentine?</h2>
+                <p>I promise to show you all the reasons why you're amazing :)</p>
+                <div class="valentine-buttons">
+                    <button class="yes-btn" onclick="answerYes()">Yes!</button>
+                    <button class="no-btn" id="noBtn" onmouseover="moveNoButton()" onclick="tryClickNo()">No</button>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="container">
-        <h1>💝 Reasons I Love You 💝</h1>
-        <p class="subtitle">Click the button to discover why you're amazing</p>
-        
-        <div class="reason-display">
-            <p class="reason-text initial-message">Press the button to see a reason...</p>
+        <div class="title-bar">
+            <div class="title-text">Reasons I Love You</div>
+            <div class="window-controls">
+                <div class="control-btn minimize"></div>
+                <div class="control-btn maximize"></div>
+                <div class="control-btn close"></div>
+            </div>
         </div>
-        
-        <button class="btn" onclick="showReason()">Show Me Love ❤️</button>
-        
-        <div class="counter">
-            <span id="counter">Reasons shown: 0</span>
+        <div class="window-content">
+            <h1>Reasons I Love You</h1>
+            <p class="subtitle">Click the button to discover why you're amazing</p>
+            
+            <div class="reason-display">
+                <p class="reason-text initial-message">Press the button to see a reason...</p>
+            </div>
+            
+            <button class="btn" onclick="showReason()">Show Me More</button>
+            
+            <div class="counter">
+                <span id="counter">Reasons shown: 0</span>
+            </div>
         </div>
     </div>
 
@@ -303,18 +487,24 @@
 
         function moveNoButton() {
             const noBtn = document.getElementById('noBtn');
-            const popup = noBtn.closest('.valentine-popup');
-            const popupRect = popup.getBoundingClientRect();
+            const buttonsContainer = noBtn.closest('.valentine-buttons');
             
-            // Random position within the popup
-            const maxX = popupRect.width - noBtn.offsetWidth - 40;
-            const maxY = popupRect.height - noBtn.offsetHeight - 40;
+            // Randomly swap position or move it
+            const shouldSwap = Math.random() > 0.5;
             
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
-            
-            noBtn.style.left = randomX + 'px';
-            noBtn.style.top = randomY + 'px';
+            if (shouldSwap) {
+                // Swap with Yes button
+                const yesBtn = buttonsContainer.querySelector('.yes-btn');
+                if (noBtn.nextSibling === yesBtn) {
+                    buttonsContainer.insertBefore(noBtn, yesBtn);
+                } else {
+                    buttonsContainer.insertBefore(yesBtn, noBtn);
+                }
+            } else {
+                // Change the button text to something funny
+                const funnyTexts = ['Try again', 'Did you mean yes?', '<-- Yes is here', 'I think you misclicked', 'Please', 'YES'];
+                noBtn.textContent = funnyTexts[Math.floor(Math.random() * funnyTexts.length)];
+            }
         }
 
         function tryClickNo() {
@@ -360,28 +550,54 @@
         `;
         document.head.appendChild(style);
 
-        // Add your personalized reasons here!
         const reasons = [
-            "Your laugh is my favorite sound in the entire world",
-            "You make even the most ordinary days feel special",
+            "You are kind and patient",
+            "You are the most talented painter",
             "The way you care about the little things shows how big your heart is",
-            "You believe in me even when I don't believe in myself",
-            "Your smile lights up every room you walk into",
+            "You are my future swim instructor",
+            "Your smile lights up the room",
+            "You get along with everybody",
+            "You remember things I forget",
+            "You look good in brown",
+            "You give me time to myself",
+            "You're cute even when you're annoyed",
+            "You take the best photos",
+            "You like to sing songs randomly",
+            "You make me feel understood",
+            "You like be silly",
+            "You make simple things special",
+            "You're gentle without being fragile",
+            "You wear Christmas socks in the summer",
+            "You would look good in a cunty bob",
+            "You're patient with my nonsense",
+            "You ask how my day really was",
+            "You're soft but also mentally strong",
+            "You don't take yourself too seriously",
+            "You appreciate small wins",
+            "You make cafe recommendations I trust",
+            "You're not a picky eater",
+            "You're always open to try new things",
+            "You let me be quiet",
+            "You let me laugh when I shouldn't",
             "You make me want to be a better person every single day",
             "The way you see beauty in everything inspires me",
             "You're my best friend and my favorite adventure",
-            "Your kindness to others never goes unnoticed",
-            "You make me laugh until my stomach hurts",
-            "The way you understand me without me having to say a word",
+            "You teach me Chinese",
+            "You always listen to what I have to say",
+            "I love trying new foods with you",
             "You're incredibly smart and I love learning from you",
-            "Your hugs feel like home to me",
+            "We like the same foods",
+            "You somehow always smell good",
+            "You find the best cat stickers",
+            "You help me organize my thoughts when I overthink",
             "You support my dreams like they're your own",
-            "The little notes you leave for me make my whole day",
+            "You help me put my thoughts into words",
             "Your passion for the things you love is contagious",
-            "You make me feel safe and loved exactly as I am",
-            "The way you dance when you think no one is watching",
-            "You have the most beautiful heart I've ever known",
-            "Every moment with you is a moment I'll treasure forever"
+            "You help me try things that make me uncomfortable",
+            "You have the cutest laugh",
+            "You have big eyes and a small face",
+            "You like to hug and cuddle",
+            "You get excited about Jellycats"
         ];
 
         let count = 0;
